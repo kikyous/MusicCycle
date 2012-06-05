@@ -1,0 +1,15 @@
+CACHE MANIFEST
+
+# VERSION 20
+
+CACHE:
+/static/style.css
+/static/jquery-1.7.2.min.js
+/static/organictabs.jquery.js
+/static/styles-note.css
+/static/jquery-ui.css
+/static/scripts-note.js
+/static/jquery-ui.min.js
+
+NETWORK:
+*

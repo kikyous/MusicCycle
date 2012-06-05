@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+	<title>用户登录</title>
+	<link rel="stylesheet" href="/static/login.css" type="text/css" media="all" charset="utf-8" />
+	
+	<script src="/static/jquery-1.7.2.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="/static/jquery.infieldlabel.min.js" type="text/javascript" charset="utf-8"></script>
+	
+	<script type="text/javascript" charset="utf-8">
+		$(function(){ $("label").inFieldLabels(); });
+	</script>
+    <style type="text/css">
+        body {
+            margin-top: 100px;
+            margin-right: auto;
+            margin-bottom: auto;
+            margin-left: auto;
+        }
+    
+    </style>
+	<!--[if lte IE 6]>
+		<style type="text/css" media="screen">
+			form label {
+					background: #fff;
+			}
+		</style>
+	<![endif]-->
+</head>
+
+<body>
+	<div class="body"><h1>Music Cycle</h1></div>
+	<form action="/login" method="post" accept-charset="utf-8">
+		<fieldset>
+			<legend>用户登录</legend>
+			<p>
+				<label for="name">用户名</label><br />
+				<label for="name" class="tip"></label><br />
+				<input type="text" name="name" value="" id="name">
+			</p>
+			<p>
+				<label for="password">密码</label><br />
+				<label for="password" class="tip"></label><br />
+				<input type="password" name="website" value="" id="password">
+			</p>
+		</fieldset>
+		<p><input type="submit" value="登录"></p>
+	</form>
+	
+</body>
+</html>

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	
+	<title>Music Cycle</title>
+	
+	<link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href="/static/styles-note.css">
+    
+    <!-- <link rel="stylesheet" href="/static/jquery-ui.css" type="text/css"/> -->
+    <script src="/static/jquery-1.7.2.min.js"></script>
+    <script src="/static/organictabs.jquery.js"></script>
+    <script src="/static/jquery-ui.custom.min.js"></script>
+    <script src="/static/scripts-note.js"></script>
+    
+    <script src="/static/jquery.jplayer.min.js"></script>
+
+    <script>
+        $(function() {
+            $("#example-one").organicTabs();
+        });
+    </script>
+        <script type="text/javascript">
+
+        $(document).ready(function(){
+
+
+            audioE=$("#jquery_jplayer_1");
+            $.CreateNote();
+
+            var postick=$(".postick");
+            var control=$("#control");
+            $("#hidden").hide();
+
+            control.hide();
+            postick.mouseleave(function(){
+              setTimeout(function(){ control.fadeOut();},300);
+            });
+
+            postick.mouseenter(function(){
+              control.stop(true,true).fadeIn();
+            });
+
+
+                $("div.list-wrap a").click(function(){
+                    current=$(this);
+                    setSrc(current);
+                    });
+                $("#prev").click(function(){
+                    prevTracks();
+                    });
+                $("#next").click(function(){
+                    nextTracks();
+                    });
+                // playing=1;
+                $("#pause").click(function(){
+                        audioE.jPlayer("pause");
+                    });
+                $(".editable").click(function(){
+                    $(".nav>li>a[href=#"+tabname+"]").trigger("click");
+
+                    });  
+                // Volume slider
+                var setVolume = function(value){
+                    audioE.jPlayer("volume", value);
+                    $('.volume .pace').css('width', value * 100 + '%');
+                    $('.volume .slider a').css('left', value * 100 + '%');
+                }
+
+                var volume = 0.6;
+                $('.volume .slider').slider({max: 1, min: 0, step: 0.01, value: volume, slide: function(event, ui){
+                    setVolume(ui.value);
+                    $(this).addClass('enable');
+                    $('.mute').removeClass('enable');
+                }, stop: function(){
+                    $(this).removeClass('enable');
+                }}).children('.pace').css('width', volume * 100 + '%');
+
+                function setSrc(item){
+                    $(".old").animate({height:24},"slow");
+                    $(".old").removeClass("old");
+                    setPlayer(item);
+                    var songname=item.text();
+                    tabname=$("#player").parent().parent().attr("id")
+                    var staticsrc="{{ rooturl }}"+tabname+"/"+songname;
+                    //$("#audio").attr("src",staticsrc);
+                    var url=encodeURI(staticsrc);
+                    setFlashSrc(url);
+
+                    // niftyplayer('niftyPlayer1').loadAndPlay(url);
+                    
+                    item.parent().addClass("old");
+                    setNote(tabname,songname);
+                    }
+
+                function nextTracks(){
+                current=current.parent().next().children("a");
+               //  li:nth-child(2)
+                setSrc(current);
+                }
+
+                function prevTracks(){
+                current=current.parent().prev().children("a");
+                setSrc(current);
+                }
+                
+
+                function setPlayer(item){
+                    item.parent().animate({height:40},"slow");
+                    var player=document.getElementById("player");
+                    item.after(player);
+                }
+
+                function setNote(tabname,songname){
+                    $(".editable").fadeOut();
+                    $(".editable").html("<br>" + tabname+ "<br>"+songname);
+                    $(".editable").fadeIn();
+                }
+
+                audioE.bind($.jPlayer.event.ended , function(event) {
+                    nextTracks(); 
+                  });
+
+            // function setFalsh(file){
+            $("#jquery_jplayer_1").jPlayer({
+                ready: function(event) {
+                    $(this).jPlayer("setMedia", {
+                        mp3: '',
+                    });
+                },
+                swfPath: "http://www.jplayer.org/2.1.0/js",
+                supplied: "mp3",
+                solution: "flash"
+            });
+            // }
+            function setFlashSrc(file){
+                 $("#jquery_jplayer_1").jPlayer( "clearMedia" );
+                 $("#jquery_jplayer_1").jPlayer("setMedia", {
+                        mp3: file,
+                    }).jPlayer("play")
+
+            }
+
+        });
+
+    
+</script>
+</head>
+
+<body>
+    <div id="hiddenf">
+        <div id="player"></div>
+        <div id="jquery_jplayer_1"></div>
+    </div>
+
+	<div id="page-wrap">
+	
+        <div id="example-one">
+        			
+        	<ul class="nav">
+                {% for i in mainlist %}
+                    <li class="nav-one" >
+                    <a href="{{ '#'+i.title}}" class={{mainlist.index(i) or "current"}}>
+                        {{ i.title }}
+                    </a>
+                    </li>
+                {% end %}
+            </ul>
+        	
+        	<div class="list-wrap">
+        	       {% for i in mainlist %}
+                       <ul id="{{i.title}}" class={{mainlist.index(i) and "hide"}}>
+                            {% for a in i.playlist %}
+                            <li>
+                            <a>{{ a }}</a>
+                            </li>
+                            {% end %}
+                        </ul>
+                    {% end %}
+                    <br />
+                    
+
+        	 </div> <!-- END List Wrap -->
+         
+         </div> <!-- END Organic Tabs (Example One) -->
+		 
+		 <p>Powered By Python</p>
+         <p>Copyright © 2012 <a href="http://www.lzu.me" target="_blank">Lzu.me</a>. All Rights Reserved</p>
+
+	</div>
+	
+</body>
+
+</html>

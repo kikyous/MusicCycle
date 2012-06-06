@@ -82,8 +82,8 @@
     
    
     $.CreateNote = function(){
-        $('#page-wrap').append('<div class="postick" style="left:20px;top:70px"><div class="toolbar"><span class="delete" title="Close">x</span></div><div class="editable"><br>点此显示正在播放的歌曲</div><div id="control"><div style="height:18px;"><span id="prev">上一曲</span> <span id="pause" class="jp-pause">暂停/播放</span> <span id="next">下一曲</span></div> <div class="volume right"> <div class="mute icon left"></div> <div class="slider left ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all"> <div class="pace" style="width: 46%; "></div> <a class="ui-slider-handle ui-state-default ui-corner-all" href="#" style="left: 46%; "></a></div> </div> </div></div>'); $(".postick").draggable({cancel: '.editable ,#control'
-        });
+        $('#page-wrap').append('<div class="postick" style="left: 820px; top: 96px;"><div class="toolbar"><span class="delete" title="Close">x</span></div><div class="editable"><br>可以把喜欢的歌曲拖动到左边<br>点此显示正在播放的歌曲</div><div id="control"><div style="height:18px;"><span id="prev">上一曲</span> <span id="pause" class="jp-pause">暂停/播放</span> <span id="next">下一曲</span></div> <div class="volume right"> <div class="mute icon left"></div> <div class="slider left ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all"> <div class="pace" style="width: 46%; "></div> <a class="ui-slider-handle ui-state-default ui-corner-all" href="#" style="left: 46%; "></a></div> </div> </div></div>');
+        $(".postick").draggable({cancel: '.editable ,#control'});
     };
 
 

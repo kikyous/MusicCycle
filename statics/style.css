@@ -12,8 +12,8 @@ h1 { font: bold 40px Sans-Serif; margin: 0 0 20px 0; }
 
 
 /* Specific to example one */
-
-
+#favlist { position:absolute ; left: 20px ; top:120px ;width:180px}
+#example-one { position:relative ; left: 0px ;}
 #example-one { background: #eee; padding: 0px 10px 28px 10px; margin: 0px 0px 25px 0px; -moz-box-shadow: 0 0 5px #666; -webkit-box-shadow: 0 0 5px #666; box-shadow: 0 0 5px #666;}
 #example-one .nav { overflow: hidden; margin: 0 0 10px 0; }
 #example-one .nav li { height :34px ;width: 97px; float: left; margin: 0 5px 0 5px; }
@@ -21,11 +21,11 @@ h1 { font: bold 40px Sans-Serif; margin: 0 0 20px 0; }
 #example-one .nav li a { display: block; padding: 5px; background: #959290; color: white; font-size: 10px; text-align: center; border: 0; }
 #example-one .nav li a:hover { background-color: #111; }
 
-#example-one ul { list-style: none; }
-#example-one ul li a { display: block; border-bottom: 1px solid #666; padding: 4px; color: #666;}
+#favlist ul,#example-one ul { list-style: none; }
+#favlist ul li a,#example-one ul li a { display: block; border-bottom: 1px solid #666; padding: 4px; color: #666;}
 
 .list-wrap ul li a {margin: 0px 5px 0px 5px;}
-#example-one ul li a:hover { background: #5497c6; color: white; }
+#favlist ul li a:hover ,#example-one ul li a:hover { background: #5497c6; color: white; }
 #example-one ul li:last-child a { border: none; }
 
 #example-one ul li.nav-one a.current, #example-one ul.featured li a:hover { background-color: #0575f4; color: white; }
@@ -95,3 +95,5 @@ margin-top: 11px;
 margin-left: 10px;
 width: 100px;
 }
+
+

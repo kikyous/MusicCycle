@@ -25,6 +25,14 @@
 
         $(document).ready(function(){
 
+            $( "#favlist>ul" ).sortable({});
+            $("#playlist>ul>li").draggable({
+			connectToSortable: "#favlist>ul",
+			helper: "clone",
+			revert: "invalid"
+		});
+            
+
 
             audioE=$("#jquery_jplayer_1");
             $.CreateNote();
@@ -35,7 +43,7 @@
 
             control.hide();
             postick.mouseleave(function(){
-              setTimeout(function(){ control.fadeOut();},300);
+              control.fadeOut();
             });
 
             postick.mouseenter(function(){
@@ -43,10 +51,21 @@
             });
 
 
-                $("div.list-wrap a").click(function(){
-                    current=$(this);
+                $("#playlist").click(function(e){
+                    var e=e||window.event;
+                    var obj=e.target||e.srcElement;
+                    current=$(obj);
                     setSrc(current);
                     });
+
+                $("#favlist").click(function(e){
+                    var e=e||window.event;
+                    var obj=e.target||e.srcElement;
+                    current=$(obj);
+                    setSrc(current);
+                    });
+
+
                 $("#prev").click(function(){
                     prevTracks();
                     });
@@ -81,18 +100,17 @@
                     $(".old").animate({height:24},"slow");
                     $(".old").removeClass("old");
                     setPlayer(item);
-                    var songname=item.text();
-                    tabname=$("#player").parent().parent().attr("id")
-                    var staticsrc="{{ rooturl }}"+tabname+"/"+songname;
-                    //$("#audio").attr("src",staticsrc);
+                    var name=item.parent().attr("uri");
+                    var songname=name.split("/")[1]
+                    tabname=name.split("/")[0]
+                    var staticsrc="{{ rooturl }}"+name;
                     var url=encodeURI(staticsrc);
                     setFlashSrc(url);
-
-                    // niftyplayer('niftyPlayer1').loadAndPlay(url);
-                    
                     item.parent().addClass("old");
                     setNote(tabname,songname);
                     }
+
+
 
                 function nextTracks(){
                 current=current.parent().next().children("a");
@@ -155,6 +173,26 @@
     </div>
 
 	<div id="page-wrap">
+
+        <div id="favlist" class="list-wrap">
+            <ul>
+                <li uri="叶惠美/以父之名.mp3">
+                <a >以父之名.mp3</a>
+                </li>
+                <li uri="八度空间/回到过去.mp3">
+                <a >回到过去.mp3</a>
+                </li>
+                <li uri="十一月的肖邦/周杰伦-珊瑚海.mp3">
+                <a >周杰伦-珊瑚海.mp3</a>
+                </li>
+                <li uri="十一月的肖邦/夜曲.mp3">
+                <a >夜曲.mp3</a>
+                </li>
+            </ul>
+            <br />
+
+        </div> <!-- END List Wrap -->
+
 	
         <div id="example-one">
         			
@@ -168,18 +206,19 @@
                 {% end %}
             </ul>
         	
-        	<div class="list-wrap">
+       	<div class="list-wrap" id="playlist">
         	       {% for i in mainlist %}
                        <ul id="{{i.title}}" class={{mainlist.index(i) and "hide"}}>
                             {% for a in i.playlist %}
-                            <li>
-                            <a>{{ a }}</a>
+                            <li uri= "{{"%s/%s"%(i.title,a)}}">
+                            <a>
+                                {{ a }}
+                            </a>
                             </li>
                             {% end %}
                         </ul>
                     {% end %}
                     <br />
-                    
 
         	 </div> <!-- END List Wrap -->
          

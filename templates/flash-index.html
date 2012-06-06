@@ -97,8 +97,15 @@
                 }}).children('.pace').css('width', volume * 100 + '%');
 
                 function setSrc(item){
-                    $(".old").animate({height:24},"slow");
-                    $(".old").removeClass("old");
+
+                    var old=$(".old");
+                    var height=item.parent().height() + 17 + 'px';
+                    item.parent().animate({height:height},"slow" , callback=function(){
+                        var height=old.height() - 17 + 'px';
+                        old.animate({height:height},"slow" );
+                    });
+
+                    old.removeClass("old");
                     setPlayer(item);
                     var name=item.parent().attr("uri");
                     var songname=name.split("/")[1]
@@ -125,7 +132,6 @@
                 
 
                 function setPlayer(item){
-                    item.parent().animate({height:40},"slow");
                     var player=document.getElementById("player");
                     item.after(player);
                 }

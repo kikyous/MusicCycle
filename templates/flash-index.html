@@ -54,15 +54,25 @@
                 $("#playlist").click(function(e){
                     var e=e||window.event;
                     var obj=e.target||e.srcElement;
-                    current=$(obj);
-                    current.is('a') && setSrc(current);
+                    var item=$(obj);
+                    if  ( item.is('a') )
+                        {
+                            current=item;
+                            setSrc(current);
+                        }
+
                     });
 
                 $("#favlist").click(function(e){
                     var e=e||window.event;
                     var obj=e.target||e.srcElement;
-                    current=$(obj);
-                    current.is('a') && setSrc(current);
+                    var item=$(obj);
+                    if  ( item.is('a') )
+                        {
+                            current=item;
+                            setSrc(current);
+                        }
+
                     });
 
 

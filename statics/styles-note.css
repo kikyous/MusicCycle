@@ -1,10 +1,4 @@
 /************ Tags ************/
-body {
-	background:#e3c495;
-	padding:0;
-	margin:0;
-	font-family: Helvetica, Verdana, Geneva, sans-serif
-}
 
 header {
 	padding-left:20px;
@@ -27,26 +21,6 @@ h1 {
 	text-transform:capitalize;
 }
 
-input[type="button"] {
-	padding:10px;
-	color:black;
-	font-weight:bold;
-	text-shadow: 1px 1px 0px white;
-	background:#EFE4DC;
-	border:1px solid black;
-	-moz-border-radius:5px;
-	border-radius:5px;
-	float:left;
-	margin:5px 10px 0 0;
-}
-
-input[type="button"]:hover {
-	background:#E03A00;
-	color:white;
-	text-shadow: 1px 1px 0px black;
-	cursor:pointer;
-}
-/************ Classes ************/
 
 /* Postick's button "delete" */
 .delete {

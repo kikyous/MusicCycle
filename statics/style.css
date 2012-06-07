@@ -1,5 +1,5 @@
 * { margin: 0; padding: 0; }
-body { font: 12px Georgia, serif; }
+body { font: 12px Georgia, serif;}
 html { overflow-y: scroll; }
 a { text-decoration: none; }
 a:focus { outline: 0; }
@@ -10,7 +10,24 @@ h1 { font: bold 40px Sans-Serif; margin: 0 0 20px 0; }
 /* Generic Utility */
 .hide { position: absolute; top: -9999px; left: -9999px; }
 
+body {
+    /* background:#e3c495; */
+	padding:0;
+	margin:0;
+    /* font-family: Helvetica, Verdana, Geneva, sans-serif */
+}
 
+body{
+    background-image: url(http://music.lzu.me/static/background.jpg);
+    background-attachment:fixed
+}
+
+#example-one ,.postick{
+	filter:alpha(opacity=50);
+	-moz-opacity:0.5;
+	-khtml-opacity: 0.5;
+	opacity: 0.7;
+}
 /* Specific to example one */
 #favlist { position:absolute ; left: 20px ; top:120px ;width:180px}
 #example-one { position:relative ; left: 0px ;}
@@ -23,7 +40,7 @@ h1 { font: bold 40px Sans-Serif; margin: 0 0 20px 0; }
 
 #favlist ul,#example-one ul { list-style: none; }
 #favlist ul li a,#example-one ul li a { display: block; border-bottom: 1px solid #666; padding: 4px; color: #666;}
-
+#playlist ul li a,#favlist ul li a { cursor:default; }
 .list-wrap ul li a {margin: 0px 5px 0px 5px;}
 #favlist ul li a:hover ,#example-one ul li a:hover { background: #5497c6; color: white; }
 #example-one ul li:last-child a { border: none; }
@@ -95,5 +112,3 @@ margin-top: 11px;
 margin-left: 10px;
 width: 100px;
 }
-
-

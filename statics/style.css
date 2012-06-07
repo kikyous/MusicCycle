@@ -1,5 +1,5 @@
 * { margin: 0; padding: 0; }
-body { font: 12px Georgia, serif;}
+body { font-size: 12px ;}
 html { overflow-y: scroll; }
 a { text-decoration: none; }
 a:focus { outline: 0; }
@@ -24,8 +24,8 @@ body{
 
 #example-one ,.postick{
 	filter:alpha(opacity=50);
-	-moz-opacity:0.5;
-	-khtml-opacity: 0.5;
+	-moz-opacity:0.7;
+	-khtml-opacity: 0.7;
 	opacity: 0.7;
 }
 /* Specific to example one */
@@ -35,7 +35,7 @@ body{
 #example-one .nav { overflow: hidden; margin: 0 0 10px 0; }
 #example-one .nav li { height :34px ;width: 97px; float: left; margin: 0 5px 0 5px; }
 #example-one .nav li.last { margin-right: 0; }
-#example-one .nav li a { display: block; padding: 5px; background: #959290; color: white; font-size: 10px; text-align: center; border: 0; }
+#example-one .nav li a { display: block; padding: 5px; background: #959290; color: white; font-size: 12px; text-align: center; border: 0; }
 #example-one .nav li a:hover { background-color: #111; }
 
 #favlist ul,#example-one ul { list-style: none; }

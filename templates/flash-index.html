@@ -55,14 +55,14 @@
                     var e=e||window.event;
                     var obj=e.target||e.srcElement;
                     current=$(obj);
-                    setSrc(current);
+                    current.is('a') && setSrc(current);
                     });
 
                 $("#favlist").click(function(e){
                     var e=e||window.event;
                     var obj=e.target||e.srcElement;
                     current=$(obj);
-                    setSrc(current);
+                    current.is('a') && setSrc(current);
                     });
 
 

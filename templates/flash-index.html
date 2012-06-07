@@ -108,7 +108,7 @@
 
                 function setSrc(item){
 
-                    var old=$(".old");
+                    var old=$("ul>.old");
                     var height=item.parent().height() + 17 + 'px';
                     item.parent().animate({height:height},"slow" , callback=function(){
                         var height=old.height() - 17 + 'px';
@@ -146,7 +146,6 @@
 
                 function setPlayer(item){
                     var player=document.getElementById("player");
-                    item.after(player);
                 }
 
                 function setNote(tabname,songname){

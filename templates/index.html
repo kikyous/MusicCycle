@@ -101,7 +101,7 @@
                 }}).children('.pace').css('width', volume * 100 + '%');
 
                 function setSrc(item){
-                    var old=$(".old");
+                    var old=$("ul>.old");
                     var height=item.parent().height() + 17 + 'px';
                     item.parent().animate({height:height},"slow" , callback=function(){
                         var height=old.height() - 17 + 'px';
@@ -138,7 +138,7 @@
                     }, false);
                 function setPlayer(item){
                     var player=document.getElementById("player");
-                    item.after(player);
+                    // item.after(player);
                 }
 
                 function setNote(tabname,songname){

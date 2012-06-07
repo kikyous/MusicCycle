@@ -119,8 +119,10 @@
                     }
 
                 function nextTracks(){
-                current=current.parent().next().children("a");
-               //  li:nth-child(2)
+                    var liItem=current.parent().next()
+                    if (! liItem.length)
+                        liItem=current.parent().parent().children("li:first");
+                    current=liItem.children("a");
                 setSrc(current);
                 }
 

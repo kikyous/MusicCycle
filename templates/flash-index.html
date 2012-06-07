@@ -130,10 +130,13 @@
 
 
                 function nextTracks(){
-                current=current.parent().next().children("a");
-               //  li:nth-child(2)
-                setSrc(current);
+                    var liItem=current.parent().next()
+                    if (! liItem.length)
+                        liItem=current.parent().parent().children("li:first");
+                    current=liItem.children("a");
+                    setSrc(current);
                 }
+
 
                 function prevTracks(){
                 current=current.parent().prev().children("a");
